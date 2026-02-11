@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Flex Gate & Locker Codes</title>
+
+<style>
+:root {
+  --bg:#000;
+  --surface:#0a0a0f;
+  --text:#f5f5f7;
+  --sub:#9ca3af;
+  --accent:#3b82f6;
+  --border:rgba(255,255,255,0.07);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+
+header{
+  position:sticky;
+  top:0;
+  background:rgba(0,0,0,0.95);
+  padding:16px;
+  border-bottom:1px solid var(--border);
+}
+
+h1{
+  font-size:24px;
+  margin-bottom:12px;
+}
+
+.search input{
+  width:100%;
+  padding:12px;
+  background:#111;
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:white;
+}
+
+.filters{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+.filter-btn{
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#111;
+  color:white;
+  cursor:pointer;
+}
+
+.filter-btn.active{
+  background:var(--accent);
+  border-color:var(--accent);
+}
+
+.stats{
+  padding:12px 16px;
+  color:var(--sub);
+  font-size:13px;
+}
+
+.group{
+  margin:12px 16px;
+  background:var(--surface);
+  border-radius:12px;
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+
+.group-header{
+  padding:14px 18px;
+  background:#111;
+  cursor:pointer;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+}
+
+.group.collapsed .items{display:none}
+
+.entry{
+  padding:14px 18px;
+  border-top:1px solid var(--border);
+}
+
+.address{
+  font-weight:600;
+  margin-bottom:4px;
+}
+
+.location{
+  color:var(--sub);
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.tags{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+.tag{
+  padding:6px 12px;
+  border-radius:8px;
+  font-size:13px;
+  text-decoration:none;
+}
+
+.tag.gate{
+  background:rgba(59,130,246,0.2);
+  color:#60a5fa;
+}
+
+.tag.street{
+  background:#1f2937;
+  color:white;
+}
+
+.tag.type{
+  background:#111;
+  color:var(--sub);
+}
+
+footer{
+  text-align:center;
+  padding:16px;
+  color:var(--sub);
+  font-size:12px;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Flex Gate & Locker Codes</h1>
+<div class="search">
+<input id="q" placeholder="Search address, community, gate" autocomplete="off"/>
+</div>
+<div class="filters">
+<button class="filter-btn active" data-type="All">All</button>
+<button class="filter-btn" data-type="Apartments">Apartments</button>
+<button class="filter-btn" data-type="Residential">Residential</button>
+<button class="filter-btn" data-type="Businesses">Businesses</button>
+</div>
+</header>
+
+<div class="stats" id="stats">Loading...</div>
+<main id="list"></main>
+<footer>Hosted on GitHub Pages</footer>
+
+<script>
+let DATA = {};
+let META = {};
+let currentType = "All";
+
+const qInput = document.getElementById('q');
+const stats = document.getElementById('stats');
+const list = document.getElementById('list');
+
+function render(){
+  const query = qInput.value.toLowerCase().trim();
+  let totalMatches = 0;
+  let groupCount = 0;
+
+  const html = Object.entries(DATA).map(([community, entries])=>{
+
+    const filtered = entries.filter(e=>{
+      const typeMatch = currentType==="All"||e.type===currentType;
+      const searchMatch =
+        e.address.toLowerCase().includes(query)||
+        community.toLowerCase().includes(query)||
+        (e.gate||'').toLowerCase().includes(query);
+      return typeMatch&&searchMatch;
+    });
+
+    if(!filtered.length) return "";
+
+    totalMatches+=filtered.length;
+    groupCount++;
+
+    return `
+      <div class="group collapsed">
+        <div class="group-header">
+          ${community}
+          <span>(${filtered.length})</span>
+        </div>
+        <div class="items">
+          ${filtered.map(e=>`
+            <div class="entry">
+              <div class="address">${e.address}</div>
+              <div class="location">${community} • ${e.type}</div>
+              <div class="tags">
+                <span class="tag gate">${e.gate?'Gate '+e.gate:'No Code'}</span>
+                <a class="tag street"
+                   href="https://www.google.com/maps/@?api=1&map_action=pano&query=${encodeURIComponent(e.address+', '+community)}"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                   Street View
+                </a>
+                <span class="tag type">${e.type.toLowerCase()}</span>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  stats.textContent=`${totalMatches} addresses • ${groupCount} groups • ${META.total_rows_after_cleaning||0} total rows`;
+  list.innerHTML=html||"<div style='padding:40px;text-align:center;color:#666;'>No results</div>";
+
+  document.querySelectorAll('.group-header').forEach(h=>{
+    h.addEventListener('click',()=>{
+      h.parentElement.classList.toggle('collapsed');
+    });
+  });
+}
+
+let timeout;
+qInput.addEventListener('input',()=>{
+  clearTimeout(timeout);
+  timeout=setTimeout(render,150);
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentType=btn.dataset.type;
+    render();
+  });
+});
+
+fetch('data.json')
+  .then(r=>r.json())
+  .then(data=>{
+    DATA=data.groups;
+    META=data.meta;
+    render();
+  })
+  .catch(()=>{
+    stats.textContent="Failed to load data.json";
+  });
+</script>
+
+</body>
+</html>
