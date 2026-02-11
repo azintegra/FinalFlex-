@@ -43,7 +43,7 @@
     "Canoa Terrace": [
       {
         "address": "5812 S Azure Vista Way, Green Valley",
-        "gate": "",
+        "gate": "3373",
         "type": "Apartments"
       }
     ],
@@ -85,7 +85,7 @@
     "Desert Springs Apartments": [
       {
         "address": "6710 E Golf Links Rd, Tucson",
-        "gate": "",
+        "gate": "2020 0079",
         "type": "Apartments"
       }
     ],
@@ -99,7 +99,7 @@
     "Encantada Saguaro National": [
       {
         "address": "5750 S Houghton Rd, Tucson",
-        "gate": "",
+        "gate": "6867",
         "type": "Apartments"
       }
     ],
@@ -113,14 +113,14 @@
     "Hacienda del Rio": [
       {
         "address": "3517 N Camino La Jicarrilla, Tucson",
-        "gate": "",
+        "gate": "2745",
         "type": "Apartments"
       }
     ],
     "Harrison Park Apartments": [
       {
         "address": "350 N Harrison Rd, Tucson",
-        "gate": "",
+        "gate": "3373",
         "type": "Apartments"
       }
     ],
@@ -169,7 +169,7 @@
     "Mission Tierra Apartments": [
       {
         "address": "5505 S Mission Rd (Mission Tierra Apts), Tucson",
-        "gate": "",
+        "gate": "3373",
         "type": "Apartments"
       }
     ],
@@ -381,7 +381,7 @@
     "Sabino Mountain": [
       {
         "address": "4081 N Quail Canyon Dr, Tucson",
-        "gate": "",
+        "gate": "0685",
         "type": "Apartments"
       }
     ],
@@ -1037,14 +1037,14 @@
     "Foothills II": [
       {
         "address": "7046 N Mercer Spring Pl, Tucson",
-        "gate": "",
+        "gate": "1919 1969",
         "type": "Residential"
       }
     ],
     "Green Ridge Estates": [
       {
         "address": "10369 E Sonoran Vista Trl, Tucson",
-        "gate": "",
+        "gate": "6067",
         "type": "Residential"
       }
     ],
@@ -1065,14 +1065,14 @@
     "Houghton Reserve": [
       {
         "address": "10338 E Red Slate Pl, Tucson",
-        "gate": "",
+        "gate": "7576",
         "type": "Residential"
       }
     ],
     "JD Ranch": [
       {
         "address": "14221 E Wild Jesse Way, Vail",
-        "gate": "",
+        "gate": "9678 4526",
         "type": "Residential"
       }
     ],
@@ -1117,7 +1117,7 @@
       },
       {
         "address": "9490 N Castle Rock Dr, Tucson",
-        "gate": "",
+        "gate": "1957 0324 8242 6017 5132",
         "type": "Residential"
       }
     ],
@@ -1272,7 +1272,7 @@
     "Rancho Resort": [
       {
         "address": "15900 S Rancho Resort Blvd, Sahuarita",
-        "gate": "",
+        "gate": "1303 1373",
         "type": "Residential"
       }
     ],
@@ -1352,7 +1352,7 @@
     "Rio Robles Estates": [
       {
         "address": "4342 E Desert Oak Trl, Tucson",
-        "gate": "",
+        "gate": "0311",
         "type": "Residential"
       }
     ],
@@ -1371,7 +1371,7 @@
     "Rocking K Ranch": [
       {
         "address": "14013 E Crotalus Way, Vail",
-        "gate": "",
+        "gate": "0318 0725 0122 0323",
         "type": "Residential"
       }
     ],
