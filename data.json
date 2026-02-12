@@ -3,7 +3,7 @@
     "total_rows_after_cleaning": 272,
     "unique_communities": 141,
     "duplicates_removed": 0,
-    "missing_gate_codes": 44,
+    "missing_gate_codes": 21,
     "invalid_types_detected": [],
     "type_distribution": {
       "Apartments": 50,
@@ -29,7 +29,7 @@
     "Cabana Bridges": [
       {
         "address": "1102 E 36th St, Tucson",
-        "gate": "",
+        "gate": "5713",
         "type": "Apartments"
       }
     ],
@@ -183,7 +183,7 @@
     "Posada del Rio": [
       {
         "address": "7424 E Speedway Blvd, Tucson",
-        "gate": "",
+        "gate": "8211 | 6979",
         "type": "Apartments"
       }
     ],
@@ -402,7 +402,7 @@
     "Shadowtree Apartments": [
       {
         "address": "201 N Wilmot Rd, Tucson",
-        "gate": "",
+        "gate": "8472 | 0679 | 0922",
         "type": "Apartments"
       }
     ],
@@ -465,7 +465,7 @@
     "The Place at Riverwalk": [
       {
         "address": "3510 N Craycroft Rd, Tucson",
-        "gate": "",
+        "gate": "1234",
         "type": "Apartments"
       }
     ],
@@ -500,7 +500,7 @@
     "University Vista Apartments": [
       {
         "address": "951 E 10th St, Tucson",
-        "gate": "",
+        "gate": "1846",
         "type": "Apartments"
       }
     ],
@@ -525,7 +525,7 @@
         "type": "Apartments"
       }
     ],
-    "\u00c1rbol de la Vida": [
+    "Árbol de la Vida": [
       {
         "address": "515 N Tyndall Ave E405, Tucson",
         "gate": "8318",
@@ -1145,14 +1145,14 @@
     "Madera Highlands": [
       {
         "address": "1123 E Lumberjack Trl, Sahuarita",
-        "gate": "",
+        "gate": "1025 | 3737",
         "type": "Residential"
       }
     ],
     "Madera Shadows": [
       {
         "address": "648 E Canyon Rock Rd, Green Valley",
-        "gate": "",
+        "gate": "1963",
         "type": "Residential"
       }
     ],
@@ -1244,7 +1244,7 @@
     "Powderhorn Ranch": [
       {
         "address": "2330 N Bonanza Ave, Tucson",
-        "gate": "",
+        "gate": "2944 | 7581",
         "type": "Residential"
       }
     ],
