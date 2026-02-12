@@ -3,7 +3,7 @@
     "total_rows_after_cleaning": 272,
     "unique_communities": 141,
     "duplicates_removed": 0,
-    "missing_gate_codes": 21,
+    "missing_gate_codes": 44,
     "invalid_types_detected": [],
     "type_distribution": {
       "Apartments": 50,
@@ -16,7 +16,7 @@
       {
         "address": "905 N Tyndall Ave, Tucson",
         "gate": "0820",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Bear Canyon Apartments": [
@@ -29,22 +29,22 @@
     "Cabana Bridges": [
       {
         "address": "1102 E 36th St, Tucson",
-        "gate": "5713",
-        "type": "Apartments"
+        "gate": "",
+        "type": "Residential"
       }
     ],
     "Campus Crossings at Star Pass": [
       {
         "address": "2525 W Anklam Rd, Tucson",
         "gate": "2525",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Canoa Terrace": [
       {
         "address": "5812 S Azure Vista Way, Green Valley",
         "gate": "3373",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Casa Deena Apartments": [
@@ -58,28 +58,28 @@
       {
         "address": "9125 E Catalina Hwy, Tucson",
         "gate": "",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Catalina Vista": [
       {
         "address": "2291 N Powder Horn Dr, Tucson",
         "gate": "4128",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Cortland on the Loop": [
       {
         "address": "50 W River Rd, Tucson",
         "gate": "6160",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Dakotah Hills": [
       {
         "address": "5675 N Camino Esplendora, Tucson",
         "gate": "",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Desert Springs Apartments": [
@@ -100,7 +100,7 @@
       {
         "address": "5750 S Houghton Rd, Tucson",
         "gate": "6867",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Gateway Apartments": [
@@ -114,7 +114,7 @@
       {
         "address": "3517 N Camino La Jicarrilla, Tucson",
         "gate": "2745",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Harrison Park Apartments": [
@@ -149,7 +149,7 @@
       {
         "address": "6300 / 6380 N Camino Verde, Marana",
         "gate": "6262",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Metro Tucson Apartments": [
@@ -163,7 +163,7 @@
       {
         "address": "7525 N Wade Rd, Marana",
         "gate": "6854",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Mission Tierra Apartments": [
@@ -183,8 +183,8 @@
     "Posada del Rio": [
       {
         "address": "7424 E Speedway Blvd, Tucson",
-        "gate": "8211 | 6979",
-        "type": "Apartments"
+        "gate": "",
+        "type": "Residential"
       }
     ],
     "Presidio Palms Apartments": [
@@ -238,7 +238,7 @@
       {
         "address": "11583 N Ironwood Canyon Pl, Tucson",
         "gate": "1818 | 3232",
-        "type": "Apartments"
+        "type": "Residential"
       },
       {
         "address": "11750 N Sweet Orange Pl, Oro Valley",
@@ -382,7 +382,7 @@
       {
         "address": "4081 N Quail Canyon Dr, Tucson",
         "gate": "0685",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Sandstone Apartments": [
@@ -402,7 +402,7 @@
     "Shadowtree Apartments": [
       {
         "address": "201 N Wilmot Rd, Tucson",
-        "gate": "8472 | 0679 | 0922",
+        "gate": "",
         "type": "Apartments"
       }
     ],
@@ -417,7 +417,7 @@
       {
         "address": "10700 E Tanque Verde Rd, Tucson",
         "gate": "",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "StoneWood Apartments": [
@@ -431,7 +431,7 @@
       {
         "address": "4800 Sunset Rd, Marana",
         "gate": "1058 | 1927 | 8501",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "The Flash Apartments": [
@@ -445,62 +445,62 @@
       {
         "address": "110 S Church Ave, Tucson",
         "gate": "",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "The Gallery on Fifth": [
       {
         "address": "127 S 5th Ave, Tucson",
         "gate": "",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "The Pines": [
       {
         "address": "8480 N Continental Links Dr, Marana",
         "gate": "0124",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "The Place at Riverwalk": [
       {
         "address": "3510 N Craycroft Rd, Tucson",
-        "gate": "1234",
-        "type": "Apartments"
+        "gate": "",
+        "type": "Residential"
       }
     ],
     "The Retreat at Speedway": [
       {
         "address": "7401 E Speedway Blvd, Tucson",
         "gate": "",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Tucson House": [
       {
         "address": "1501 N Oracle Rd, Tucson",
         "gate": "",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Two East Congress": [
       {
         "address": "2 E Congress St, Tucson",
         "gate": "",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Union on 6th": [
       {
         "address": "316 & 340 E 6th St, Tucson",
         "gate": "0340",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "University Vista Apartments": [
       {
         "address": "951 E 10th St, Tucson",
-        "gate": "1846",
+        "gate": "",
         "type": "Apartments"
       }
     ],
@@ -508,7 +508,7 @@
       {
         "address": "238 W Ventura St, Tucson",
         "gate": "1102",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Villa Delano Apartments": [
@@ -525,18 +525,18 @@
         "type": "Apartments"
       }
     ],
-    "Árbol de la Vida": [
+    "\u00c1rbol de la Vida": [
       {
         "address": "515 N Tyndall Ave E405, Tucson",
         "gate": "8318",
-        "type": "Apartments"
+        "type": "Residential"
       }
     ],
     "Agave Apartments": [
       {
         "address": "444 W Orange Grove Rd, Tucson",
         "gate": "6417",
-        "type": "Residential"
+        "type": "Apartments"
       }
     ],
     "Amphi": [
@@ -1145,14 +1145,14 @@
     "Madera Highlands": [
       {
         "address": "1123 E Lumberjack Trl, Sahuarita",
-        "gate": "1025 | 3737",
+        "gate": "",
         "type": "Residential"
       }
     ],
     "Madera Shadows": [
       {
         "address": "648 E Canyon Rock Rd, Green Valley",
-        "gate": "1963",
+        "gate": "",
         "type": "Residential"
       }
     ],
@@ -1200,7 +1200,7 @@
       {
         "address": "104 W Navajo St, Tucson",
         "gate": "5892",
-        "type": "Residential"
+        "type": "Apartments"
       }
     ],
     "Oracle Foothills Estates": [
@@ -1224,7 +1224,7 @@
       {
         "address": "2363 E Orange Grove Rd, Tucson",
         "gate": "1074",
-        "type": "Residential"
+        "type": "Apartments"
       }
     ],
     "Pepper Ridge": [
@@ -1238,13 +1238,13 @@
       {
         "address": "750 W Orange Grove Rd, Tucson",
         "gate": "6160",
-        "type": "Residential"
+        "type": "Apartments"
       }
     ],
     "Powderhorn Ranch": [
       {
         "address": "2330 N Bonanza Ave, Tucson",
-        "gate": "2944 | 7581",
+        "gate": "",
         "type": "Residential"
       }
     ],
@@ -1332,7 +1332,7 @@
       {
         "address": "3980 W Linda Vista Blvd, Tucson",
         "gate": "3980",
-        "type": "Residential"
+        "type": "Apartments"
       }
     ],
     "Rincon Heights": [
@@ -1393,14 +1393,14 @@
       {
         "address": "3515 N Sabino Canyon Rd, Tucson",
         "gate": "3515",
-        "type": "Residential"
+        "type": "Apartments"
       }
     ],
     "Sahara Apartments": [
       {
         "address": "919 N Stone Ave, Tucson",
         "gate": "",
-        "type": "Residential"
+        "type": "Apartments"
       }
     ],
     "Sahuarita": [
@@ -1623,7 +1623,7 @@
       {
         "address": "1001 W Saint Marys Rd, Tucson",
         "gate": "8762",
-        "type": "Residential"
+        "type": "Apartments"
       }
     ],
     "Absolute Windows": [
