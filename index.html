@@ -116,6 +116,7 @@ h1{
   border-radius:8px;
   font-size:13px;
   text-decoration:none;
+  cursor:pointer;
 }
 
 .tag.gate{
@@ -169,6 +170,17 @@ const qInput = document.getElementById('q');
 const stats = document.getElementById('stats');
 const list = document.getElementById('list');
 
+function openMap(encodedAddress) {
+  const appUrl = `comgooglemaps://?q=${encodedAddress}`;
+  const webUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+
+  window.location = appUrl;
+
+  setTimeout(function () {
+    window.location = webUrl;
+  }, 600);
+}
+
 function render(){
   const query = qInput.value.toLowerCase().trim();
   let totalMatches = 0;
@@ -203,12 +215,10 @@ function render(){
               <div class="location">${community} • ${e.type}</div>
               <div class="tags">
                 <span class="tag gate">${e.gate?'Gate '+e.gate:'No Code'}</span>
-                <a class="tag street"
-                   href="https://www.google.com/maps/@?api=1&map_action=pano&query=${encodeURIComponent(e.address+', '+community)}"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                   Street View
-                </a>
+                <span class="tag street"
+                      onclick="openMap('${encodeURIComponent(e.address + ', ' + community + ', Tucson, AZ')}')">
+                      Street View
+                </span>
                 <span class="tag type">${e.type.toLowerCase()}</span>
               </div>
             </div>
