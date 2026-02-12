@@ -5,57 +5,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Flex Gate & Locker Codes</title>
 
+<link rel="manifest" href="manifest.json">
+
 <style>
-:root {
+:root{
   --bg:#000;
-  --surface:#0a0a0f;
+  --surface:#0f0f18;
   --text:#f5f5f7;
   --sub:#9ca3af;
   --accent:#3b82f6;
-  --border:rgba(255,255,255,0.07);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
+
 body{
-  background:var(--bg);
-  color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  color:var(--text);
+  background:radial-gradient(circle at top,#111 0%,#000 65%);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:80px;
 }
 
 header{
   position:sticky;
   top:0;
-  background:rgba(0,0,0,0.95);
-  padding:16px;
-  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  background:rgba(0,0,0,0.75);
+  padding:18px 16px 14px;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  z-index:100;
 }
 
 h1{
-  font-size:24px;
-  margin-bottom:12px;
+  font-size:26px;
+  font-weight:700;
+  margin-bottom:14px;
 }
 
 .search input{
   width:100%;
-  padding:12px;
-  background:#111;
-  border:1px solid var(--border);
-  border-radius:10px;
+  padding:14px 16px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,0.06);
+  background:rgba(255,255,255,0.05);
   color:white;
+  font-size:15px;
 }
 
 .filters{
   display:flex;
-  gap:8px;
-  margin-top:12px;
+  gap:10px;
+  margin-top:14px;
 }
 
 .filter-btn{
-  padding:8px 14px;
+  padding:9px 18px;
   border-radius:999px;
-  border:1px solid var(--border);
-  background:#111;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.05);
   color:white;
+  font-size:13px;
+  transition:all .15s ease;
   cursor:pointer;
 }
 
@@ -64,90 +74,116 @@ h1{
   border-color:var(--accent);
 }
 
-.stats{
-  padding:12px 16px;
-  color:var(--sub);
-  font-size:13px;
+.group{
+  margin:16px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#0f0f18,#0a0a12);
+  border:1px solid rgba(255,255,255,0.05);
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  overflow:hidden;
+  animation:fadeIn .3s ease;
 }
 
-.group{
-  margin:12px 16px;
-  background:var(--surface);
-  border-radius:12px;
-  border:1px solid var(--border);
-  overflow:hidden;
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(8px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 .group-header{
-  padding:14px 18px;
-  background:#111;
-  cursor:pointer;
+  padding:18px 22px;
   font-weight:600;
+  font-size:15px;
+  background:rgba(255,255,255,0.03);
+  cursor:pointer;
   display:flex;
   justify-content:space-between;
 }
 
-.group.collapsed .items{display:none}
-
 .entry{
-  padding:14px 18px;
-  border-top:1px solid var(--border);
+  padding:18px 22px;
+  border-top:1px solid rgba(255,255,255,0.05);
 }
 
 .address{
+  font-size:16px;
   font-weight:600;
-  margin-bottom:4px;
+  margin-bottom:6px;
 }
 
 .location{
+  font-size:13px;
   color:var(--sub);
-  font-size:14px;
-  margin-bottom:8px;
+  margin-bottom:12px;
 }
 
 .tags{
   display:flex;
-  gap:8px;
+  gap:10px;
   flex-wrap:wrap;
 }
 
 .tag{
-  padding:6px 12px;
-  border-radius:8px;
-  font-size:13px;
-  text-decoration:none;
+  padding:7px 16px;
+  border-radius:999px;
+  font-size:12px;
   cursor:pointer;
+  transition:all .15s ease;
+}
+
+.tag:active{
+  transform:scale(.9);
 }
 
 .tag.gate{
-  background:rgba(59,130,246,0.2);
+  background:rgba(59,130,246,.25);
   color:#60a5fa;
 }
 
+.tag.gate.missing{
+  background:#7f1d1d;
+  color:#fca5a5;
+}
+
 .tag.street{
-  background:#1f2937;
-  color:white;
+  background:rgba(255,255,255,.08);
 }
 
-.tag.type{
-  background:#111;
-  color:var(--sub);
+.tag.favorite{
+  background:#222;
 }
 
-footer{
-  text-align:center;
-  padding:16px;
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:70px;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(20px);
+  border-top:1px solid rgba(255,255,255,0.05);
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.bottom-btn{
   color:var(--sub);
-  font-size:12px;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.bottom-btn.active{
+  color:var(--accent);
 }
 </style>
 </head>
+
 <body>
 
 <header>
 <h1>Flex Gate & Locker Codes</h1>
 <div class="search">
-<input id="q" placeholder="Search address, community, gate" autocomplete="off"/>
+<input id="q" placeholder="Search address, community, gate"/>
 </div>
 <div class="filters">
 <button class="filter-btn active" data-type="All">All</button>
@@ -157,92 +193,89 @@ footer{
 </div>
 </header>
 
-<div class="stats" id="stats">Loading...</div>
 <main id="list"></main>
-<footer>Hosted on GitHub Pages</footer>
+
+<div class="bottom-nav">
+  <div class="bottom-btn active" id="navAll">All</div>
+  <div class="bottom-btn" id="navFav">Favorites</div>
+</div>
 
 <script>
 let DATA = {};
-let META = {};
-let currentType = "All";
+let currentType="All";
+let favorites = JSON.parse(localStorage.getItem("favorites")||"[]");
+let showFavorites = false;
 
-const qInput = document.getElementById('q');
-const stats = document.getElementById('stats');
-const list = document.getElementById('list');
+const qInput=document.getElementById('q');
+const list=document.getElementById('list');
 
-function openMap(encodedAddress) {
-  const appUrl = `comgooglemaps://?q=${encodedAddress}`;
-  const webUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+function openMap(encoded){
+  const app=`comgooglemaps://?q=${encoded}`;
+  const web=`https://www.google.com/maps/search/?api=1&query=${encoded}`;
+  window.location=app;
+  setTimeout(()=>{window.location=web},600);
+}
 
-  window.location = appUrl;
-
-  setTimeout(function () {
-    window.location = webUrl;
-  }, 600);
+function toggleFavorite(address){
+  if(favorites.includes(address)){
+    favorites=favorites.filter(a=>a!==address);
+  }else{
+    favorites.push(address);
+  }
+  localStorage.setItem("favorites",JSON.stringify(favorites));
+  render();
 }
 
 function render(){
-  const query = qInput.value.toLowerCase().trim();
-  let totalMatches = 0;
-  let groupCount = 0;
+  const query=qInput.value.toLowerCase().trim();
 
-  const html = Object.entries(DATA).map(([community, entries])=>{
+  const html=Object.entries(DATA).map(([community,entries])=>{
 
-    const filtered = entries.filter(e=>{
-      const typeMatch = currentType==="All"||e.type===currentType;
-      const searchMatch =
+    const filtered=entries.filter(e=>{
+      if(showFavorites && !favorites.includes(e.address)) return false;
+      const typeMatch=currentType==="All"||e.type===currentType;
+      const searchMatch=
         e.address.toLowerCase().includes(query)||
         community.toLowerCase().includes(query)||
-        (e.gate||'').toLowerCase().includes(query);
+        (e.gate||"").toLowerCase().includes(query);
       return typeMatch&&searchMatch;
     });
 
     if(!filtered.length) return "";
 
-    totalMatches+=filtered.length;
-    groupCount++;
-
     return `
-      <div class="group collapsed">
+      <div class="group">
         <div class="group-header">
           ${community}
           <span>(${filtered.length})</span>
         </div>
-        <div class="items">
-          ${filtered.map(e=>`
-            <div class="entry">
-              <div class="address">${e.address}</div>
-              <div class="location">${community} • ${e.type}</div>
-              <div class="tags">
-                <span class="tag gate">${e.gate?'Gate '+e.gate:'No Code'}</span>
-                <span class="tag street"
-                      onclick="openMap('${encodeURIComponent(e.address + ', ' + community + ', Tucson, AZ')}')">
-                      Street View
-                </span>
-                <span class="tag type">${e.type.toLowerCase()}</span>
-              </div>
+        ${filtered.map(e=>`
+          <div class="entry">
+            <div class="address">${e.address}</div>
+            <div class="location">${community} • ${e.type}</div>
+            <div class="tags">
+              <span class="tag gate ${!e.gate?'missing':''}">
+                ${e.gate?'Gate '+e.gate:'⚠ Missing Code'}
+              </span>
+              <span class="tag street"
+                onclick="openMap('${encodeURIComponent(e.address+', '+community+', Tucson, AZ')}')">
+                Street View
+              </span>
+              <span class="tag favorite"
+                onclick="toggleFavorite('${e.address}')">
+                ${favorites.includes(e.address)?'★ Saved':'☆ Save'}
+              </span>
             </div>
-          `).join("")}
-        </div>
+          </div>
+        `).join("")}
       </div>
     `;
   }).join("");
 
-  stats.textContent=`${totalMatches} addresses • ${groupCount} groups • ${META.total_rows_after_cleaning||0} total rows`;
-  list.innerHTML=html||"<div style='padding:40px;text-align:center;color:#666;'>No results</div>";
-
-  document.querySelectorAll('.group-header').forEach(h=>{
-    h.addEventListener('click',()=>{
-      h.parentElement.classList.toggle('collapsed');
-    });
-  });
+  list.innerHTML=html||"<div style='padding:60px;text-align:center;color:#666;'>No results</div>";
 }
 
-let timeout;
-qInput.addEventListener('input',()=>{
-  clearTimeout(timeout);
-  timeout=setTimeout(render,150);
-});
+qInput.addEventListener('input',render);
 
 document.querySelectorAll('.filter-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -253,15 +286,25 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
   });
 });
 
+document.getElementById("navAll").onclick=()=>{
+  showFavorites=false;
+  document.getElementById("navAll").classList.add("active");
+  document.getElementById("navFav").classList.remove("active");
+  render();
+};
+
+document.getElementById("navFav").onclick=()=>{
+  showFavorites=true;
+  document.getElementById("navFav").classList.add("active");
+  document.getElementById("navAll").classList.remove("active");
+  render();
+};
+
 fetch('data.json')
   .then(r=>r.json())
   .then(data=>{
     DATA=data.groups;
-    META=data.meta;
     render();
-  })
-  .catch(()=>{
-    stats.textContent="Failed to load data.json";
   });
 </script>
 
