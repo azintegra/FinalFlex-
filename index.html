@@ -23,7 +23,7 @@ body{
   color:var(--text);
   background:radial-gradient(circle at top,#111 0%,#000 65%);
   -webkit-font-smoothing:antialiased;
-  padding-bottom:80px;
+  padding-bottom:28px;
 }
 
 header{
@@ -56,6 +56,7 @@ h1{
   display:flex;
   gap:10px;
   margin-top:14px;
+  flex-wrap:wrap;
 }
 
 .filter-btn{
@@ -116,6 +117,7 @@ h1{
   margin-bottom:12px;
 }
 
+/* Existing tag look */
 .tags{
   display:flex;
   gap:10px;
@@ -134,9 +136,8 @@ h1{
   transform:scale(.9);
 }
 
-.tag.gate{
-  background:rgba(59,130,246,.25);
-  color:#60a5fa;
+.tag.street{
+  background:rgba(255,255,255,.08);
 }
 
 .tag.gate.missing{
@@ -144,70 +145,329 @@ h1{
   color:#fca5a5;
 }
 
-.tag.street{
-  background:rgba(255,255,255,.08);
-}
+/* Cleaner gate tag layout (keeps your current look) */
+.tags.gates{ gap:8px; }
 
-.tag.favorite{
-  background:#222;
-}
-
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  height:70px;
-  background:rgba(0,0,0,0.85);
-  backdrop-filter:blur(20px);
-  border-top:1px solid rgba(255,255,255,0.05);
-  display:flex;
-  justify-content:space-around;
+.tag.gate{
+  display:inline-flex;
   align-items:center;
+  gap:6px;
+  background:rgba(59,130,246,.25);
+  color:#60a5fa;
+  font-variant-numeric:tabular-nums;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
-.bottom-btn{
+/* "+more" pill */
+.tag.more{
+  background:rgba(255,255,255,.06);
+  border:1px dashed rgba(255,255,255,.18);
+  color:var(--sub);
+}
+
+/* Expand area */
+.gate-expand{ margin-top:10px; }
+.gate-expand summary{
+  display:inline-flex;
+  cursor:pointer;
+  user-select:none;
+  list-style:none;
+}
+.gate-expand summary::-webkit-details-marker{ display:none; }
+.gate-grid{
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+/* Addresses expander */
+.addr-details{
+  margin-top:10px;
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding-top:10px;
+}
+
+.addr-details summary{
+  cursor:pointer;
   color:var(--sub);
   font-size:13px;
-  cursor:pointer;
+  list-style:none;
 }
 
-.bottom-btn.active{
-  color:var(--accent);
+.addr-details summary::-webkit-details-marker{display:none}
+
+.addr-list{
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
+
+.addr-item{
+  padding:10px 12px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.05);
+  border-radius:12px;
+  font-size:13px;
+  color:var(--text);
+}
+
+/* Per-address gate chips inside expander */
+.addr-chips{
+  margin-top:8px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+/* Type pill */
+.tag.type{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);
+  color:var(--sub);
+  cursor:default;
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>Flex Gate & Locker Codes</h1>
-<div class="search">
-<input id="q" placeholder="Search address, community, gate"/>
-</div>
-<div class="filters">
-<button class="filter-btn active" data-type="All">All</button>
-<button class="filter-btn" data-type="Apartments">Apartments</button>
-<button class="filter-btn" data-type="Residential">Residential</button>
-<button class="filter-btn" data-type="Businesses">Businesses</button>
-</div>
+  <h1>Flex Gate & Locker Codes</h1>
+  <div class="search">
+    <input id="q" placeholder="Search address, community, gate"/>
+  </div>
+  <div class="filters">
+    <button class="filter-btn active" data-type="All">All</button>
+    <button class="filter-btn" data-type="Apartments">Apartments</button>
+    <button class="filter-btn" data-type="Residential">Residential</button>
+    <button class="filter-btn" data-type="Businesses">Businesses</button>
+  </div>
 </header>
 
 <main id="list"></main>
 
-<div class="bottom-nav">
-  <div class="bottom-btn active" id="navAll">All</div>
-  <div class="bottom-btn" id="navFav">Favorites</div>
-</div>
-
 <script>
-let DATA = {};
+let DATA = {}; // merged groups: { displayCommunityName: entries[] }
 let currentType="All";
-let favorites = JSON.parse(localStorage.getItem("favorites")||"[]");
-let showFavorites = false;
 
 const qInput=document.getElementById('q');
 const list=document.getElementById('list');
+
+const DIGIT_RE = /\\d+/g;
+const NON_ALNUM_TO_SPACE_RE = /[^a-z0-9]+/g;
+
+function stripAccents(s){
+  return (s||"").normalize("NFKD").replace(/[\\u0300-\\u036f]/g,"");
+}
+function cleanSpaces(s){
+  return String(s||"").trim().replace(/\\s+/g," ");
+}
+
+function titleCaseSmart(s){
+  const small = new Set(["a","an","and","as","at","but","by","for","from","in","into","near","nor","of","on","or","over","the","to","up","via","with"]);
+  const words = cleanSpaces(s).split(" ").filter(Boolean);
+  return words.map((w,i)=>{
+    if (/^\\d+$/.test(w)) return w;
+    const upper = w.toUpperCase();
+    if (w.length <= 3 && w === upper && /[A-Z]/.test(w)) return w;
+    const lower = w.toLowerCase();
+    if (i !== 0 && small.has(lower)) return lower;
+    return lower.charAt(0).toUpperCase() + lower.slice(1);
+  }).join(" ");
+}
+
+function normCommunity(name){
+  const base = stripAccents(cleanSpaces(name)).toLowerCase();
+  return cleanSpaces(base.replace(NON_ALNUM_TO_SPACE_RE, " "));
+}
+
+function expandAbbrevTokens(tokens){
+  const map = new Map([
+    ["n","north"], ["s","south"], ["e","east"], ["w","west"],
+    ["ne","northeast"], ["nw","northwest"], ["se","southeast"], ["sw","southwest"],
+
+    ["rd","road"], ["st","street"], ["ave","avenue"], ["av","avenue"],
+    ["blvd","boulevard"], ["dr","drive"], ["ln","lane"], ["pl","place"],
+    ["ct","court"], ["cir","circle"], ["trl","trail"], ["pkwy","parkway"],
+    ["hwy","highway"], ["mt","mount"], ["ste","suite"], ["apt","apartment"],
+    ["apts","apartments"], ["unit","unit"], ["bldg","building"],
+  ]);
+  return tokens.map(t => map.get(t.toLowerCase()) || t.toLowerCase());
+}
+
+function normAddress(addr){
+  const base = stripAccents(cleanSpaces(addr)).toLowerCase();
+  const cleaned = cleanSpaces(base.replace(NON_ALNUM_TO_SPACE_RE, " "));
+  const toks = cleaned.split(" ").filter(Boolean);
+  return expandAbbrevTokens(toks).join(" ");
+}
+
+function extractGateTokens(raw){
+  const m = String(raw||"").match(DIGIT_RE);
+  return m ? m : [];
+}
+
+function uniqPreserve(arr){
+  const seen=new Set();
+  const out=[];
+  for(const x of arr){
+    if(seen.has(x)) continue;
+    seen.add(x);
+    out.push(x);
+  }
+  return out;
+}
+
+function mostCommon(arr){
+  const counts = new Map();
+  for(const v of arr.filter(Boolean)){
+    counts.set(v, (counts.get(v)||0)+1);
+  }
+  let best="", bestN=-1;
+  for(const [k,n] of counts.entries()){
+    if(n>bestN){best=k;bestN=n;}
+  }
+  return best;
+}
+
+function normType(t){
+  const raw = cleanSpaces(t).toLowerCase();
+  const k = raw.replace(/[^a-z]+/g, " ").trim();
+
+  if (!k) return "Unknown";
+  if (["apt","apts","apartment","apartments"].includes(k)) return "Apartments";
+  if (k.includes("apartment")) return "Apartments";
+
+  if (["residential","residence","home","homes","housing"].includes(k)) return "Residential";
+  if (k.includes("residential")) return "Residential";
+
+  if (["business","businesses","commercial"].includes(k)) return "Businesses";
+  if (k.includes("business") || k.includes("commercial")) return "Businesses";
+
+  if (k.includes("student")) return "Residential";
+  return titleCaseSmart(k);
+}
+
+function scoreDisplayString(s){
+  const str = String(s||"");
+  if(!str) return -1e9;
+  const words = str.split(" ").filter(Boolean);
+  let caps = 0;
+  let lowers = 0;
+  for(const w of words){
+    if (/^[A-Z]/.test(w)) caps++;
+    if (w === w.toLowerCase()) lowers++;
+  }
+  return caps*3 - lowers*2 - Math.abs(str.length - 28)*0.05;
+}
+
+function pickBestDisplay(values){
+  const uniq = uniqPreserve(values.filter(Boolean).map(v=>cleanSpaces(v)));
+  if(!uniq.length) return "";
+  let best = uniq[0];
+  let bestScore = scoreDisplayString(best);
+  for(const v of uniq.slice(1)){
+    const sc = scoreDisplayString(v);
+    if(sc > bestScore){
+      best = v;
+      bestScore = sc;
+    }
+  }
+  return best;
+}
+
+function sortGateTokens(tokens){
+  return [...tokens].sort((a,b)=>{
+    const ai = parseInt(a,10);
+    const bi = parseInt(b,10);
+    if(ai !== bi) return ai - bi;
+    return a.length - b.length;
+  });
+}
+
+function renderGateTags(tokens, maxVisible=8){
+  const sorted = sortGateTokens(tokens);
+  if(!sorted.length){
+    return `<span class="tag gate missing">No gate codes listed</span>`;
+  }
+
+  const visible = sorted.slice(0, maxVisible);
+  const hidden = sorted.slice(maxVisible);
+
+  const visibleHtml = visible.map(code => `<span class="tag gate">#${code}</span>`).join("");
+
+  if(!hidden.length){
+    return `<div class="tags gates">${visibleHtml}</div>`;
+  }
+
+  const hiddenHtml = hidden.map(code => `<span class="tag gate">#${code}</span>`).join("");
+
+  return `
+    <div class="tags gates">
+      ${visibleHtml}
+      <details class="gate-expand">
+        <summary class="tag more">+${hidden.length} more</summary>
+        <div class="gate-grid">${hiddenHtml}</div>
+      </details>
+    </div>
+  `;
+}
+
+function normalizeAndMergeGroups(groups){
+  const buckets = new Map();
+  for(const [community, entries] of Object.entries(groups||{})){
+    const commNorm = normCommunity(community);
+    if(!buckets.has(commNorm)){
+      buckets.set(commNorm, { entries: [] });
+    }
+    const bucket = buckets.get(commNorm);
+    if(Array.isArray(entries)) bucket.entries.push(...entries);
+  }
+
+  const merged = {};
+
+  for(const [commNorm, bucket] of buckets.entries()){
+    const displayCommunity = titleCaseSmart(commNorm);
+
+    const byAddr = new Map();
+    for(const raw of bucket.entries){
+      const address = cleanSpaces(raw?.address);
+      const type = normType(raw?.type);
+      const gateRaw = cleanSpaces(raw?.gate);
+
+      const addrNorm = normAddress(address);
+      if(!byAddr.has(addrNorm)){
+        byAddr.set(addrNorm, { addresses: [], types: [], gatesRaw: [] });
+      }
+      const agg = byAddr.get(addrNorm);
+      agg.addresses.push(address);
+      agg.types.push(type);
+      agg.gatesRaw.push(gateRaw);
+    }
+
+    const entriesOut = [];
+    for(const [addrNorm, agg] of byAddr.entries()){
+      const bestAddress = pickBestDisplay(agg.addresses) || titleCaseSmart(addrNorm);
+      const bestType = mostCommon(agg.types) || "Unknown";
+      const gateTokens = uniqPreserve(agg.gatesRaw.flatMap(g=>extractGateTokens(g)));
+      entriesOut.push({
+        address: bestAddress,
+        type: bestType,
+        gate: gateTokens.join(" "),
+        _addrNorm: addrNorm,
+        _commNorm: commNorm,
+        _gateTokens: gateTokens,
+      });
+    }
+
+    merged[displayCommunity] = entriesOut;
+  }
+
+  return merged;
+}
 
 function openMap(encoded){
   const app=`comgooglemaps://?q=${encoded}`;
@@ -216,58 +476,109 @@ function openMap(encoded){
   setTimeout(()=>{window.location=web},600);
 }
 
-function toggleFavorite(address){
-  if(favorites.includes(address)){
-    favorites=favorites.filter(a=>a!==address);
-  }else{
-    favorites.push(address);
-  }
-  localStorage.setItem("favorites",JSON.stringify(favorites));
-  render();
-}
-
 function render(){
   const query=qInput.value.toLowerCase().trim();
 
   const html=Object.entries(DATA).map(([community,entries])=>{
+    const filteredEntries=entries.filter(e=>{
+      const typeMatch = currentType==="All" || e.type===currentType;
+      if(!typeMatch) return false;
 
-    const filtered=entries.filter(e=>{
-      if(showFavorites && !favorites.includes(e.address)) return false;
-      const typeMatch=currentType==="All"||e.type===currentType;
-      const searchMatch=
-        e.address.toLowerCase().includes(query)||
-        community.toLowerCase().includes(query)||
-        (e.gate||"").toLowerCase().includes(query);
-      return typeMatch&&searchMatch;
+      if(!query) return true;
+
+      const gates = (e._gateTokens || []).join(" ");
+      return (
+        String(e.address||"").toLowerCase().includes(query) ||
+        community.toLowerCase().includes(query) ||
+        String(e.gate||"").toLowerCase().includes(query) ||
+        gates.includes(query)
+      );
     });
 
-    if(!filtered.length) return "";
+    if(!filteredEntries.length) return "";
+
+    const gateCodes = uniqPreserve(
+      filteredEntries.flatMap(e => (e._gateTokens || extractGateTokens(e.gate)))
+    );
+
+    const addresses = uniqPreserve(
+      filteredEntries.map(e => String(e.address||"").trim()).filter(Boolean)
+    );
+
+    const type = mostCommon(filteredEntries.map(e => e.type)) || "Unknown";
+
+    const firstAddr = addresses[0] || "";
+    const extraEntries = filteredEntries.slice(1);
+
+    // Group extra addresses by type for a cleaner expander
+    const byType = {};
+    for(const e of extraEntries){
+      const t = e.type || "Unknown";
+      (byType[t] ||= []).push(e);
+    }
+    const typeOrder = Object.keys(byType).sort((a,b)=>{
+      if (a === "Residential") return -1;
+      if (b === "Residential") return 1;
+      if (a === "Apartments") return -1;
+      if (b === "Apartments") return 1;
+      if (a === "Businesses") return -1;
+      if (b === "Businesses") return 1;
+      return a.localeCompare(b);
+    });
+
+    const extraHtml = extraEntries.length ? `
+      <details class="addr-details">
+        <summary>Show ${extraEntries.length} more address${extraEntries.length>1?"es":""}</summary>
+        <div class="addr-list">
+          ${typeOrder.map(t => `
+            <div class="addr-item" style="background:rgba(255,255,255,0.03);border-style:dashed;">
+              <strong style="font-size:13px;">${t}</strong>
+            </div>
+            ${byType[t].map(e => {
+              const addr = String(e.address||"").trim();
+              const chips = renderGateTags(e._gateTokens || [], 6);
+              return `
+                <div class="addr-item">
+                  ${addr}
+                  <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+                    <span class="tag type">${e.type}</span>
+                  </div>
+                  <div class="addr-chips">${chips}</div>
+                  <div style="margin-top:8px;">
+                    <span class="tag street"
+                      onclick="openMap('${encodeURIComponent(addr+', '+community+', Tucson, AZ')}')">
+                      Street View
+                    </span>
+                  </div>
+                </div>
+              `;
+            }).join("")}
+          `).join("")}
+        </div>
+      </details>
+    ` : "";
 
     return `
       <div class="group">
         <div class="group-header">
           ${community}
-          <span>(${filtered.length})</span>
+          <span>(${filteredEntries.length})</span>
         </div>
-        ${filtered.map(e=>`
-          <div class="entry">
-            <div class="address">${e.address}</div>
-            <div class="location">${community} • ${e.type}</div>
-            <div class="tags">
-              <span class="tag gate ${!e.gate?'missing':''}">
-                ${e.gate?'Gate '+e.gate:'⚠ Missing Code'}
-              </span>
-              <span class="tag street"
-                onclick="openMap('${encodeURIComponent(e.address+', '+community+', Tucson, AZ')}')">
-                Street View
-              </span>
-              <span class="tag favorite"
-                onclick="toggleFavorite('${e.address}')">
-                ${favorites.includes(e.address)?'★ Saved':'☆ Save'}
-              </span>
-            </div>
+
+        <div class="entry">
+          ${firstAddr ? `<div class="address">${firstAddr}</div>` : `<div class="address">${community}</div>`}
+          <div class="location">${community} • ${type}</div>
+
+          <div class="tags">
+            ${renderGateTags(gateCodes, 8)}
+            <span class="tag street"
+              onclick="openMap('${encodeURIComponent((firstAddr||community)+', '+community+', Tucson, AZ')}')">
+              Street View
+            </span>
           </div>
-        `).join("")}
+
+          ${extraHtml}
+        </div>
       </div>
     `;
   }).join("");
@@ -286,26 +597,46 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
   });
 });
 
-document.getElementById("navAll").onclick=()=>{
-  showFavorites=false;
-  document.getElementById("navAll").classList.add("active");
-  document.getElementById("navFav").classList.remove("active");
-  render();
-};
-
-document.getElementById("navFav").onclick=()=>{
-  showFavorites=true;
-  document.getElementById("navFav").classList.add("active");
-  document.getElementById("navAll").classList.remove("active");
-  render();
-};
-
-fetch('data.json')
-  .then(r=>r.json())
+/* Prefer cleaned data if present; fallback to raw */
+fetch('data.cleaned.json')
+  .then(r => r.ok ? r.json() : Promise.reject())
   .then(data=>{
-    DATA=data.groups;
+    DATA = data.groups;
     render();
+  })
+  .catch(()=>{
+    fetch('data.json')
+      .then(r=>r.json())
+      .then(data=>{
+        DATA = normalizeAndMergeGroups(data.groups);
+        render();
+      });
   });
+
+/* Auto-close "+more" gate dropdown when tapping outside */
+(function enableAutoCloseGateDetails(){
+  function closeAllExcept(targetDetails){
+    document.querySelectorAll("details.gate-expand[open]").forEach(d=>{
+      if(d !== targetDetails) d.removeAttribute("open");
+    });
+  }
+
+  document.addEventListener("click", (e) => {
+    const clickedDetails = e.target.closest?.("details.gate-expand") || null;
+    const clickedSummary = e.target.closest?.("details.gate-expand > summary") || null;
+
+    if (clickedSummary) {
+      closeAllExcept(clickedDetails);
+      return;
+    }
+    if (clickedDetails) return;
+    closeAllExcept(null);
+  }, true);
+
+  window.addEventListener("scroll", () => {
+    document.querySelectorAll("details.gate-expand[open]").forEach(d => d.removeAttribute("open"));
+  }, { passive: true });
+})();
 </script>
 
 </body>
