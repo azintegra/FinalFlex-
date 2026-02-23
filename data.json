@@ -1,13 +1,13 @@
 {
   "meta": {
-    "total_rows_after_cleaning": 122,
-    "unique_communities": 87,
+    "total_rows_after_cleaning": 191,
+    "unique_communities": 153,
     "duplicates_removed": 5,
     "missing_gate_codes": 2,
     "invalid_types_detected": [],
     "type_distribution": {
       "Apartments": 58,
-      "Residential": 64
+      "Residential": 133
     },
     "structure": "Alphabetized communities and sorted addresses",
     "normalization": "City, capitalization, suffixes, gates standardized"
@@ -76,6 +76,13 @@
         "gate": "961723"
       }
     ],
+    "Aria Terra Condominiums": [
+      {
+        "type": "Residential",
+        "address": "2363 E Orange Grove Rd Apt 20203",
+        "gate": "1074"
+      }
+    ],
     "Ascension at Ironwood": [
       {
         "type": "Apartments",
@@ -97,6 +104,13 @@
         "gate": "4621"
       }
     ],
+    "Bel Air Ranch Estates": [
+      {
+        "type": "Residential",
+        "address": "12595 E Fort Lowell Rd",
+        "gate": "6752"
+      }
+    ],
     "Bellas Catalinas Estates": [
       {
         "type": "Residential",
@@ -111,11 +125,25 @@
         "gate": "5712, 5713"
       }
     ],
+    "Campo Verde": [
+      {
+        "type": "Residential",
+        "address": "15557 S Paseo Campo Verde, Sahuarita",
+        "gate": "1379"
+      }
+    ],
     "Campus Crossings at Star Pass": [
       {
         "type": "Apartments",
         "address": "2525 W Anklam Rd, Tucson",
         "gate": "2525"
+      }
+    ],
+    "Canoa Ranch": [
+      {
+        "type": "Residential",
+        "address": "5829 S Waynes Way, Green Valley",
+        "gate": "1235"
       }
     ],
     "Canoa Terrace": [
@@ -132,11 +160,25 @@
         "gate": "3052"
       }
     ],
+    "Casitas at Linda Vista": [
+      {
+        "type": "Residential",
+        "address": "3980 W Linda Vista Blvd Apt 11102",
+        "gate": "3980"
+      }
+    ],
     "Casitas on Catalina": [
       {
         "type": "Apartments",
         "address": "9125 E Catalina Hwy, Tucson",
         "gate": "2112"
+      }
+    ],
+    "Catalina Foothills Estates": [
+      {
+        "type": "Residential",
+        "address": "6909 E CLOUD RD",
+        "gate": "3110"
       }
     ],
     "Catalina Ridge apts": [
@@ -151,6 +193,11 @@
         "type": "Apartments",
         "address": "2291 N Powder Horn Dr, Tucson",
         "gate": "4128"
+      },
+      {
+        "type": "Residential",
+        "address": "2238 N Catalina Vista Loop",
+        "gate": "8618"
       }
     ],
     "Circ Apts": [
@@ -158,6 +205,23 @@
         "type": "Apartments",
         "address": "2255 W Orange Grove Rd, Tucson",
         "gate": "2000, 961723"
+      }
+    ],
+    "Continental Ranch": [
+      {
+        "type": "Residential",
+        "address": "1772 N Renoir Way",
+        "gate": "2017"
+      },
+      {
+        "type": "Residential",
+        "address": "5203 W Brentwood Lane",
+        "gate": "5225"
+      },
+      {
+        "type": "Residential",
+        "address": "2225 W Smoketree St",
+        "gate": "2020"
       }
     ],
     "Coronado Hall": [
@@ -174,6 +238,18 @@
         "gate": "6160"
       }
     ],
+    "Coyote Ridge": [
+      {
+        "type": "Residential",
+        "address": "846 W Sleeping Snake Pl",
+        "gate": "1978"
+      },
+      {
+        "type": "Residential",
+        "address": "1432 W Grassy Knoll",
+        "gate": "2244"
+      }
+    ],
     "Dakotah Hills": [
       {
         "type": "Apartments",
@@ -181,11 +257,39 @@
         "gate": "4984"
       }
     ],
+    "Del Webb at Rancho Del Lago": [
+      {
+        "type": "Residential",
+        "address": "14162 E Huppenthal Blvd",
+        "gate": "1730"
+      }
+    ],
     "Desert Springs Apartments": [
       {
         "type": "Apartments",
         "address": "6710 E Golf Links Rd, Tucson",
         "gate": "0079, 2020"
+      }
+    ],
+    "Desert Utah": [
+      {
+        "type": "Residential",
+        "address": "9433 E Star Water Dr",
+        "gate": "0553"
+      }
+    ],
+    "Dove Mountain": [
+      {
+        "type": "Residential",
+        "address": "12523 N New Reflection Dr, Marana",
+        "gate": "1521"
+      }
+    ],
+    "Dove Mountain (The Preserve)": [
+      {
+        "type": "Residential",
+        "address": "12490 N Faraway Wash Trl",
+        "gate": "7677"
       }
     ],
     "Echo Luxury Apartments": [
@@ -209,6 +313,27 @@
         "gate": "6867"
       }
     ],
+    "Enclave at Stone Canyon": [
+      {
+        "type": "Residential",
+        "address": "12210 N Lopez Wells Ln",
+        "gate": "1523"
+      }
+    ],
+    "Finisterra": [
+      {
+        "type": "Residential",
+        "address": "6600 N Finisterra",
+        "gate": "6600"
+      }
+    ],
+    "Garden Estates": [
+      {
+        "type": "Residential",
+        "address": "6125 W Two Quail Ct",
+        "gate": "1125"
+      }
+    ],
     "Gateway Apartments": [
       {
         "type": "Apartments",
@@ -228,6 +353,55 @@
         "type": "Apartments",
         "address": "350 N Harrison Rd, Tucson",
         "gate": "3373"
+      }
+    ],
+    "Hidden Valley": [
+      {
+        "type": "Residential",
+        "address": "3515 N SABINO CANYON RD",
+        "gate": "3515"
+      }
+    ],
+    "Hidden Valley Estates": [
+      {
+        "type": "Residential",
+        "address": "7224 E Knollwood Dr, Tucson",
+        "gate": "3257"
+      }
+    ],
+    "Honey Bee Canyon Estates": [
+      {
+        "type": "Residential",
+        "address": "1601 W Rattlesnake Pass",
+        "gate": "8811"
+      }
+    ],
+    "Honey Bee Ridge": [
+      {
+        "type": "Residential",
+        "address": "11121 N Old Forest Trl",
+        "gate": "6501"
+      }
+    ],
+    "Ice House Lofts": [
+      {
+        "type": "Residential",
+        "address": "902 S 6th Ave Unit 207",
+        "gate": "5563"
+      }
+    ],
+    "Ironwood Canyon (at Vistoso)": [
+      {
+        "type": "Residential",
+        "address": "11470 N Ironwood Canyon Pl",
+        "gate": "1818"
+      }
+    ],
+    "Kachina Hills": [
+      {
+        "type": "Residential",
+        "address": "5655 N 1St Ave",
+        "gate": "0104"
       }
     ],
     "L6 Apartments": [
@@ -287,6 +461,13 @@
         "gate": "8310, 8318"
       }
     ],
+    "Lofts at Ventana": [
+      {
+        "type": "Residential",
+        "address": "7255 E Snyder Road",
+        "gate": "2285"
+      }
+    ],
     "Luna Azul": [
       {
         "type": "Residential",
@@ -329,6 +510,20 @@
         "gate": "1315"
       }
     ],
+    "Milagro Cohousing": [
+      {
+        "type": "Residential",
+        "address": "9055 E Catalina Hwy",
+        "gate": "4621"
+      }
+    ],
+    "Mira Vista": [
+      {
+        "type": "Residential",
+        "address": "12143 E Mira Vista Canyon Pl",
+        "gate": "6977"
+      }
+    ],
     "Mira Vista (the nudies)": [
       {
         "type": "Apartments",
@@ -357,11 +552,25 @@
         "gate": "0354, 961723"
       }
     ],
+    "One South Church": [
+      {
+        "type": "Residential",
+        "address": "111 S Church Ave Unit 613",
+        "gate": "7895"
+      }
+    ],
     "Oracle Palms Apartments": [
       {
         "type": "Apartments",
         "address": "4045 N Oracle Rd, Tucson",
         "gate": "0231"
+      }
+    ],
+    "Orange Grove Village": [
+      {
+        "type": "Residential",
+        "address": "750 W Orange Grove Rd",
+        "gate": "6160"
       }
     ],
     "Outpost Estates": [
@@ -385,6 +594,20 @@
         "gate": "2944, 4128, 7581"
       }
     ],
+    "Preserve at Dove Mountain": [
+      {
+        "type": "Residential",
+        "address": "12523 N New Reflection Dr",
+        "gate": "1521"
+      }
+    ],
+    "Preserve Twin Peaks": [
+      {
+        "type": "Residential",
+        "address": "10644 N Cactus Point Dr",
+        "gate": "5225"
+      }
+    ],
     "Presidio Palms Apartments": [
       {
         "type": "Apartments",
@@ -392,171 +615,71 @@
         "gate": "961723"
       }
     ],
+    "Pusch Ridge Vistas": [
+      {
+        "type": "Residential",
+        "address": "10 W Desert Knoll Pl",
+        "gate": "0820"
+      },
+      {
+        "type": "Residential",
+        "address": "1005 E Amber Ridge Way",
+        "gate": "0056"
+      },
+      {
+        "type": "Residential",
+        "address": "238 E Allthorn Pl",
+        "gate": "0852"
+      }
+    ],
+    "Quail Crossing": [
+      {
+        "type": "Residential",
+        "address": "4333 W Mountain Quail Rd",
+        "gate": "1200"
+      },
+      {
+        "type": "Residential",
+        "address": "3443 W Wing Tip Dr",
+        "gate": "0429"
+      }
+    ],
+    "Rancho Del Lago": [
+      {
+        "type": "Residential",
+        "address": "13740 S BEE BONNET CT",
+        "gate": "3535"
+      }
+    ],
     "Rancho Vistoso": [
       {
         "type": "Residential",
         "address": "10767 N Cactus Point Dr, Oro Valley",
-        "gate": "0018, 1026"
+        "gate": "0018, 0201, 0306, 0819, 0852, 1005, 1026, 1031, 1225, 1269, 1331, 1521, 1523, 1815, 1818, 1970, 1984, 2012, 2380, 2797, 2825, 3232, 3275, 4000, 5066, 5225, 5515, 5863, 6458, 7549, 7677, 8479, 8665, 9172, 9515, 9525, 9775"
+      }
+    ],
+    "Red Adobe Pass": [
+      {
+        "type": "Residential",
+        "address": "2537 N Yellow Flower Trl",
+        "gate": "2830"
       },
       {
         "type": "Residential",
-        "address": "11247 N Big Star Trail, Tucson",
-        "gate": "1984, 5225"
+        "address": "2389 E Autumn Flower Dr",
+        "gate": "1911"
       },
       {
         "type": "Residential",
-        "address": "11274 N Gemini Dr, Oro Valley",
-        "gate": "0201"
-      },
+        "address": "2468 N Wychwood Ct",
+        "gate": "2580"
+      }
+    ],
+    "Reflections in the Catalinas": [
       {
         "type": "Residential",
-        "address": "11449 N Meadow Sage Dr, Oro Valley",
-        "gate": "5515"
-      },
-      {
-        "type": "Residential",
-        "address": "11470 N Ironwood Canyon Pl, Oro Valley",
-        "gate": "1818"
-      },
-      {
-        "type": "Residential",
-        "address": "11532 N Desert Calico Loop, Tucson",
-        "gate": "2797"
-      },
-      {
-        "type": "Residential",
-        "address": "11573 N Copperbelle Pl, Oro Valley",
-        "gate": "7549"
-      },
-      {
-        "type": "Residential",
-        "address": "11583 N Ironwood Canyon Pl, Tucson",
-        "gate": "1818, 3232"
-      },
-      {
-        "type": "Residential",
-        "address": "11750 N Sweet Orange Pl, Oro Valley",
-        "gate": "1005, 8665"
-      },
-      {
-        "type": "Residential",
-        "address": "11794 N Silverscape Dr, Oro Valley",
-        "gate": "3275"
-      },
-      {
-        "type": "Residential",
-        "address": "11829 N Raphael Way, Oro Valley",
-        "gate": "0306"
-      },
-      {
-        "type": "Residential",
-        "address": "11831 N Raphael Way, Oro Valley",
-        "gate": "0819"
-      },
-      {
-        "type": "Residential",
-        "address": "12210 N Lopez Wells Ln, Oro Valley",
-        "gate": "1523"
-      },
-      {
-        "type": "Residential",
-        "address": "12301 N Cloud Ridge Dr, Oro Valley",
-        "gate": "6458"
-      },
-      {
-        "type": "Residential",
-        "address": "12309 N Washbed Dr, Oro Valley",
-        "gate": "0852"
-      },
-      {
-        "type": "Residential",
-        "address": "12490 N Faraway Wash Trl, Oro Valley",
-        "gate": "7677"
-      },
-      {
-        "type": "Residential",
-        "address": "12523 N New Reflection Dr, Oro Valley",
-        "gate": "1521"
-      },
-      {
-        "type": "Residential",
-        "address": "13169 N Rainbow Cactus Ct, Oro Valley",
-        "gate": "5863"
-      },
-      {
-        "type": "Residential",
-        "address": "13215 N Velvetweed Ct, Oro Valley",
-        "gate": "1031"
-      },
-      {
-        "type": "Residential",
-        "address": "13330 N Cape Marigold Dr, Oro Valley",
-        "gate": "1331"
-      },
-      {
-        "type": "Residential",
-        "address": "13359 N Cottontop Ct, Oro Valley",
-        "gate": "9172"
-      },
-      {
-        "type": "Residential",
-        "address": "13401 N Rancho Vistoso Blvd, Oro Valley",
-        "gate": "9515"
-      },
-      {
-        "type": "Residential",
-        "address": "13409 N Mariposa Lily Dr, Oro Valley",
-        "gate": "1225"
-      },
-      {
-        "type": "Residential",
-        "address": "13468 N Silver Cassia Pl, Oro Valley",
-        "gate": "9525"
-      },
-      {
-        "type": "Residential",
-        "address": "13710 N Carlynn Cliff Dr, Oro Valley",
-        "gate": "1269"
-      },
-      {
-        "type": "Residential",
-        "address": "1644 W Sage Hill Dr, Oro Valley",
-        "gate": "5066"
-      },
-      {
-        "type": "Residential",
-        "address": "1970 W Old Magee Trl Apt 5202, Oro Valley",
-        "gate": "1970"
-      },
-      {
-        "type": "Residential",
-        "address": "2225 W Sculptor St, Oro Valley",
-        "gate": "1815, 2012"
-      },
-      {
-        "type": "Residential",
-        "address": "2305 W Naranja Dr, Oro Valley",
-        "gate": "8479"
-      },
-      {
-        "type": "Residential",
-        "address": "365 E Day Flower Dr, Oro Valley",
-        "gate": "2825"
-      },
-      {
-        "type": "Residential",
-        "address": "5238 N Corral Canyon Pl, Oro Valley",
-        "gate": "9775"
-      },
-      {
-        "type": "Residential",
-        "address": "625 N Arizona Estates Loop, Oro Valley",
-        "gate": "2380"
-      },
-      {
-        "type": "Residential",
-        "address": "7963 N Placita Del Chango, Oro Valley",
-        "gate": "4000"
+        "address": "444 W Orange Grove Rd",
+        "gate": "8417"
       }
     ],
     "Rendezvous Urban Flats": [
@@ -573,11 +696,25 @@
         "gate": "1352, 2020, 3502, 4564"
       }
     ],
+    "Ritz-Carlton Residences, Dove Mountain": [
+      {
+        "type": "Residential",
+        "address": "6148 W Seven Saguaros Cir",
+        "gate": "8442"
+      }
+    ],
     "River estates": [
       {
         "type": "Residential",
         "address": "",
         "gate": "2060"
+      }
+    ],
+    "River\u2019s Edge": [
+      {
+        "type": "Residential",
+        "address": "5133 N Pelican River Way",
+        "gate": "2442"
       }
     ],
     "Sabino Canyon Apts": [
@@ -587,11 +724,147 @@
         "gate": "3857"
       }
     ],
+    "Sabino Creek": [
+      {
+        "type": "Residential",
+        "address": "6113 N Sabino Shadow Ln",
+        "gate": "6210"
+      }
+    ],
     "Sabino Mountain": [
       {
         "type": "Residential",
         "address": "4081 N Quail Canyon Dr, Tucson",
         "gate": "0685"
+      },
+      {
+        "type": "Residential",
+        "address": "3381 N Camino La Jicarilla",
+        "gate": "8342"
+      },
+      {
+        "type": "Residential",
+        "address": "3423 N Camino La Jicarilla",
+        "gate": "4295"
+      },
+      {
+        "type": "Residential",
+        "address": "3898 N Camino Ojo de Agua",
+        "gate": "3434"
+      },
+      {
+        "type": "Residential",
+        "address": "3335 N BEAR SPRING TRL",
+        "gate": "6157"
+      }
+    ],
+    "Sabino Springs": [
+      {
+        "type": "Residential",
+        "address": "5238 N Corral Canyon Pl",
+        "gate": "9775"
+      },
+      {
+        "type": "Residential",
+        "address": "3191 N Spirit Dancer Trl",
+        "gate": "1112"
+      }
+    ],
+    "Saguaro Bloom": [
+      {
+        "type": "Residential",
+        "address": "5787 W Silent Wash Pl",
+        "gate": "1131"
+      },
+      {
+        "type": "Residential",
+        "address": "5965 W ROUGH RIDER PL",
+        "gate": "6506"
+      },
+      {
+        "type": "Residential",
+        "address": "3704 W Needleleaf Dr",
+        "gate": "0842"
+      },
+      {
+        "type": "Residential",
+        "address": "2062 N WHISPERING BELLS DR",
+        "gate": "3741"
+      },
+      {
+        "type": "Residential",
+        "address": "3666 W Cottonwood Wash Way",
+        "gate": "0185"
+      },
+      {
+        "type": "Residential",
+        "address": "2956 W Encelia Ct",
+        "gate": "9031"
+      },
+      {
+        "type": "Residential",
+        "address": "2915 W Summer Rain Dr",
+        "gate": "0077"
+      }
+    ],
+    "Saguaro Bloom (Block 3)": [
+      {
+        "type": "Residential",
+        "address": "11449 N Meadow Sage Dr",
+        "gate": "5515"
+      }
+    ],
+    "Saguaro Canyon (at Vistoso)": [
+      {
+        "type": "Residential",
+        "address": "13330 N Cape Marigold Dr",
+        "gate": "1331"
+      },
+      {
+        "type": "Residential",
+        "address": "13215 N Velvetweed Ct",
+        "gate": "1031"
+      },
+      {
+        "type": "Residential",
+        "address": "13359 N Cottontop Ct",
+        "gate": "9172"
+      },
+      {
+        "type": "Residential",
+        "address": "13169 N Rainbow Cactus Ct",
+        "gate": "5863"
+      }
+    ],
+    "Saguaro Springs": [
+      {
+        "type": "Residential",
+        "address": "5961 W Copper Leaf Dr",
+        "gate": "9261"
+      },
+      {
+        "type": "Residential",
+        "address": "4100 W ROCKY SPRING DR",
+        "gate": "2542"
+      },
+      {
+        "type": "Residential",
+        "address": "3407 W Copper Spirit Dr",
+        "gate": "9765"
+      }
+    ],
+    "Sahuarita Mission (The District)": [
+      {
+        "type": "Residential",
+        "address": "515 N Tyndall Ave E405",
+        "gate": "8318"
+      }
+    ],
+    "Saint Mary's Terrace": [
+      {
+        "type": "Residential",
+        "address": "1001 W Saint Marys Rd Apt 412",
+        "gate": "8762"
       }
     ],
     "San Carlos Apts": [
@@ -636,6 +909,44 @@
         "gate": "0679, 0922, 8472"
       }
     ],
+    "Silverado Hills": [
+      {
+        "type": "Residential",
+        "address": "625 N Arizona Estates Loop",
+        "gate": "2380"
+      }
+    ],
+    "Sky Ranch": [
+      {
+        "type": "Residential",
+        "address": "4050 W Aerie Dr Unit 161",
+        "gate": "9855"
+      },
+      {
+        "type": "Residential",
+        "address": "4072 W RAWLEY MINE CT",
+        "gate": "9876"
+      }
+    ],
+    "Skyline Bel Aire Estates": [
+      {
+        "type": "Residential",
+        "address": "5732 N Calle De La Reina",
+        "gate": "9511"
+      },
+      {
+        "type": "Residential",
+        "address": "2444 N Lightning A Dr",
+        "gate": "5219"
+      }
+    ],
+    "Skyline Country Club Estates": [
+      {
+        "type": "Residential",
+        "address": "5101 N Glencoe Rd",
+        "gate": "2942"
+      }
+    ],
     "Skyline Gateway Apartments": [
       {
         "type": "Apartments",
@@ -657,6 +968,25 @@
         "gate": "4742"
       }
     ],
+    "Stone Avenue Standard": [
+      {
+        "type": "Residential",
+        "address": "201 S Stone Ave #502",
+        "gate": "3171"
+      }
+    ],
+    "Stone Canyon": [
+      {
+        "type": "Residential",
+        "address": "1431 E Lower Mine Ln",
+        "gate": "1431"
+      },
+      {
+        "type": "Residential",
+        "address": "14204 N Silent Ridge Ct",
+        "gate": "8538"
+      }
+    ],
     "Stone House": [
       {
         "type": "Residential",
@@ -671,6 +1001,20 @@
         "gate": "2621"
       }
     ],
+    "Sun Ridge (at Rancho Vistoso)": [
+      {
+        "type": "Residential",
+        "address": "12301 N Cloud Ridge Dr",
+        "gate": "6458"
+      }
+    ],
+    "Sundance Estates": [
+      {
+        "type": "Residential",
+        "address": "11543 E Sundance Dr, Tucson",
+        "gate": "2914"
+      }
+    ],
     "Sunrise pointe": [
       {
         "type": "Residential",
@@ -678,11 +1022,66 @@
         "gate": "4345"
       }
     ],
+    "Sunrise Ranch": [
+      {
+        "type": "Residential",
+        "address": "11200 E Sunrise Ranch Pl",
+        "gate": "2650"
+      }
+    ],
     "Sunset Dunes": [
       {
         "type": "Residential",
         "address": "4800 Sunset Rd, Marana",
         "gate": "1058, 1927, 8501"
+      }
+    ],
+    "Tangerine Crossing": [
+      {
+        "type": "Residential",
+        "address": "1722 W Hawk Owl Way",
+        "gate": "0612"
+      },
+      {
+        "type": "Residential",
+        "address": "1644 W Sage Hill Dr",
+        "gate": "5066"
+      },
+      {
+        "type": "Residential",
+        "address": "1745 N Water Crest Dr",
+        "gate": "1102"
+      },
+      {
+        "type": "Residential",
+        "address": "1834 W Mountain Mirage Blvd",
+        "gate": "1193"
+      }
+    ],
+    "Tangerine Ridge": [
+      {
+        "type": "Residential",
+        "address": "11829 N Raphael Way",
+        "gate": "0306"
+      },
+      {
+        "type": "Residential",
+        "address": "11831 N Raphael Way",
+        "gate": "0819"
+      }
+    ],
+    "Tangerine Terrace": [
+      {
+        "type": "Residential",
+        "address": "11851 N Mesquite Sunset Pl",
+        "gate": "7467"
+      }
+    ],
+    "Tanque Verde Guest Ranch Estates": [
+      {
+        "type": "Residential",
+        "address": "1440 N Tanque Verde Loop Rd",
+        "gate": "0616"
       }
     ],
     "The Flash Apartments": [
@@ -776,6 +1175,37 @@
         "gate": "0323"
       }
     ],
+    "Ventana Canyon Estates": [
+      {
+        "type": "Residential",
+        "address": "2446 E Blue Diamond Dr",
+        "gate": "2446"
+      },
+      {
+        "type": "Residential",
+        "address": "2414 E Agave Vista Dr",
+        "gate": "2981"
+      },
+      {
+        "type": "Residential",
+        "address": "2133 E Buck Ridge Pl",
+        "gate": "7032"
+      }
+    ],
+    "Ventana Country Club Residential": [
+      {
+        "type": "Residential",
+        "address": "1530 E Snyder Rd",
+        "gate": "0354"
+      }
+    ],
+    "Ventana Vista Condominiums": [
+      {
+        "type": "Residential",
+        "address": "4500 E Sunrise Dr Apt N04",
+        "gate": "8367"
+      }
+    ],
     "Ventura Villas": [
       {
         "type": "Apartments",
@@ -788,6 +1218,53 @@
         "type": "Apartments",
         "address": "255-243 E Delano St, Tucson",
         "gate": "1225"
+      }
+    ],
+    "Vistoso Community Association": [
+      {
+        "type": "Residential",
+        "address": "13710 N Carlynn Cliff Dr",
+        "gate": "1269"
+      }
+    ],
+    "Vistoso Highlands": [
+      {
+        "type": "Residential",
+        "address": "36 E Peralta Canyon Ct",
+        "gate": "1615"
+      }
+    ],
+    "Vistoso Village": [
+      {
+        "type": "Residential",
+        "address": "13401 N Rancho Vistoso Blvd Unit 197",
+        "gate": "9515"
+      }
+    ],
+    "Vistoso Vistas": [
+      {
+        "type": "Residential",
+        "address": "945 W Golden Barrel Ct",
+        "gate": "1559"
+      },
+      {
+        "type": "Residential",
+        "address": "1219 W Cholla Crest Dr",
+        "gate": "2355"
+      }
+    ],
+    "Voyager RV Resort": [
+      {
+        "type": "Residential",
+        "address": "4200 E Benson Hwy F8 F8",
+        "gate": "7777"
+      }
+    ],
+    "Williams Centre": [
+      {
+        "type": "Residential",
+        "address": "6101 E Gehrig Ln",
+        "gate": "7007"
       }
     ],
     "Wingview at Del Lago": [
